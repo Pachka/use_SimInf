@@ -4,7 +4,7 @@
 
 library(data.table)
 library(SimInf)
-cat("Hello you")
+
 ##################
 ## Compartments ##
 ##################
@@ -160,5 +160,3 @@ plot(result, index = 1)
 
 v0 = NULL
 pts_fun = NULL
-
-cat("Hallo")
