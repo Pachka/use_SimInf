@@ -4,7 +4,7 @@
 
 library(data.table)
 library(SimInf)
-cat("Hello")
+cat("Hello you")
 ##################
 ## Compartments ##
 ##################
