@@ -100,10 +100,6 @@ traj
 ##########################
 
 ldata = NULL
-v0 = NULL
-events = NULL
-E = NULL
-N = NULL
 
 #########################
 ## Add schedule events ##
@@ -131,14 +127,38 @@ N <- matrix(rep(0, length(compartments)),
 
 events <- data.frame(
   event      = "enter",  ## Event "extTrans" is a movement between nodes// 0) exit, 1) enter, 2) internal transfer, and 3) external transfer
-  time       = 10, ## The time that the event happens
+  time       = 20, ## The time that the event happens
   node       = 1, ## In which node does the event occur
   dest       = 2, ## Which node is the destination node
-  n          = 1, ## How many individuals are moved
-  proportion = 0, ## This is not used when n > 0
+  n          = 0, ## How many individuals are moved
+  proportion = 1, ## This is not used when n > 0
   select     = 2, ## Use the 4th column in the model select matrix
   shift      = 0 ## Not used in this example
 )
 
+model <- mparse(
+  transitions = transitions,
+  compartments = compartments,
+  gdata = gdata,
+  u0 = u0,
+  tspan = tspan,
+  E = E,
+  N = N,
+  events = events
+)
 
+result <- run(model)
+result
+
+plot(result)
+plot(result, index = 2)
+plot(result, index = 1)
+
+#####################################################
+## Continuous variable and post time step function ##
+#####################################################
+
+v0 = NULL
 pts_fun = NULL
+
+cat("Hallo")
